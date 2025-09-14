@@ -17,7 +17,7 @@ class StarDateToolTest {
         every { service.calcStarDate() } returns StarDate(localDateTime, "-238297,9")
 
         // when
-        val tool: StarDateTool = StarDateTool(service)
+        val tool = StarDateTool(service)
         val starDate = tool.getStarDate()
 
         // then
