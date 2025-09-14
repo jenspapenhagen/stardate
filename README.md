@@ -1,2 +1,2 @@
 # LocalDateTime as Star Trek (R) Stardate
-Mircoservice for displaying the localdatetime in the star-trek(r) stardate format
+Microservice for displaying the LocalDateTime in the star-trek(r) Original Series (TOS) Stardate format
