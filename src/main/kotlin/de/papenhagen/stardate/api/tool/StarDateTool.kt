@@ -3,9 +3,6 @@ package de.papenhagen.stardate.api.tool
 import de.papenhagen.stardate.service.StarDateService
 import org.springaicommunity.mcp.annotation.McpTool
 import org.springframework.stereotype.Component
-import java.lang.String
-import kotlin.Exception
-import kotlin.compareTo
 
 /**
  * MCP tools for getting local time in the Star Trek (R) TOS StarDate Format
