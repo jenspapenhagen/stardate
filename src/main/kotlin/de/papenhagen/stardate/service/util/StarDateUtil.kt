@@ -4,7 +4,7 @@ import java.time.LocalDateTime
 
 open class StarDateUtil {
     companion object {
-        private const val TOS_BASE_YEAR: Int = 2265 //Year TOS starts
+        private const val TOS_BASE_YEAR: Int = 2265 // Year TOS starts
         private const val UNITS_PER_YEAR: Double = 1000.0
 
         fun calc(dateTime: LocalDateTime): String {

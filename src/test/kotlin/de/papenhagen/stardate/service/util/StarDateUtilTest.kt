@@ -10,14 +10,13 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 import java.util.*
 
-
 class StarDateUtilTest {
     private var clock: Clock? = null
     private lateinit var storedLocale: Locale
 
     @BeforeEach
     fun setUp() {
-        //set local for period/comma rules
+        // set local for period/comma rules
         storedLocale = Locale.GERMAN
 
         val instantExpected = "2025-09-14T10:17:25Z"
@@ -29,32 +28,29 @@ class StarDateUtilTest {
         Locale.setDefault(storedLocale)
     }
 
-
     @Test
     fun testingStarDateGeneration() {
-        //given
+        // given
         val now = LocalDateTime.now(clock)
 
-        //when
+        // when
         val calcStarDate = StarDateUtil.calc(now)
 
-        //then
+        // then
         assertThat(calcStarDate).isNotBlank
         assertThat(calcStarDate).isEqualTo("-238297,9")
     }
 
     @Test
     fun originalSeriesStart() {
-        //given
+        // given
         val tosDate = LocalDateTime.of(2266, 1, 1, 0, 0)
 
-        //when
+        // when
         val calcStarDate = StarDateUtil.calc(tosDate)
 
-        //then
+        // then
         assertThat(calcStarDate).isNotBlank
         assertThat(calcStarDate).isEqualTo("2000,0")
     }
-
-
 }
