@@ -8,7 +8,7 @@ import java.time.Clock
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
-import java.util.*
+import java.util.Locale
 
 class StarDateUtilTest {
     private var clock: Clock? = null
