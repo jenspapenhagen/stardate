@@ -2,6 +2,9 @@ package de.papenhagen.stardate.service.util
 
 import java.time.LocalDateTime
 
+/**
+ * This Util is calculated the stardate base on the TOS start
+ */
 open class StarDateUtil {
     companion object {
         private const val TOS_BASE_YEAR: Int = 2265 // Year TOS starts
