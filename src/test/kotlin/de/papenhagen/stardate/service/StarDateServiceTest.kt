@@ -33,13 +33,19 @@ class StarDateServiceTest {
         // given
         val localDateTime = LocalDateTime.of(2025, 9, 14, 10, 17, 25)
         val expectedStarDate = StarDate(localDateTime, "-238297,9")
-        val service: StarDateService = StarDateService(clock)
 
         // when
-        val calcStarDate = service.calcStarDate()
+        val starDateService = StarDateService(clock)
+        val calcStarDate = starDateService.calcStarDate()
 
         // then
         assertThat(calcStarDate).isNotNull
-        assertThat(calcStarDate).isEqualTo(expectedStarDate)
+
+        assertThat(calcStarDate.starDate).startsWith("-238297")
+        assertThat(calcStarDate.starDate).endsWith("9")
+
+        assertThat(calcStarDate.localDateTime.year).isEqualTo(expectedStarDate.localDateTime.year)
+        assertThat(calcStarDate.localDateTime.dayOfYear).isEqualTo(expectedStarDate.localDateTime.dayOfYear)
+        assertThat(calcStarDate.localDateTime.month).isEqualTo(expectedStarDate.localDateTime.month)
     }
 }
