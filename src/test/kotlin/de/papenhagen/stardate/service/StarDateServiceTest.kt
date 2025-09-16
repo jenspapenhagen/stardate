@@ -40,6 +40,6 @@ class StarDateServiceTest {
 
         // then
         assertThat(calcStarDate).isNotNull
-        assertThat(calcStarDate).isEqualTo(expectedStarDate)
+        assertThat(calcStarDate.toString()).isEqualTo(expectedStarDate.toString())
     }
 }
