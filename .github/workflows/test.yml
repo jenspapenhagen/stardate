@@ -1,0 +1,67 @@
+name: Test Workflow
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+permissions:
+  contents: write
+  pull-requests: write
+  repository-projects: read
+
+jobs:
+  run-tests:
+    name: Test
+    runs-on: ubuntu-latest
+
+  steps:
+    - name: Checkout Code
+      uses: actions/checkout@v5.0.0
+      with:
+        fetch-depth: 0
+
+    - name: Cache Maven packages
+      id: cache
+      uses: actions/cache@v4.2.4
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-build-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-build-
+
+    - name: Setup Java 21 und Auth für GitHub Packages
+      uses: actions/setup-java@v5.0.0
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: 'maven'
+
+    - name: build with Maven
+      run: mvn package --file pom.xml
+
+    - name: Lint Kotlin Code
+      run: mvn ktlint:check
+
+    - name: run Unit Test
+      run: mvn test -Dtest=*Test
+
+    - name: run Kover Report
+      run: mvn kover:report-xml
+      working-directory: ${{ inputs.working-directory }}
+
+    - name: Add coverage report to PR
+      id: kover
+      uses: mi-kas/kover-report@v1.9
+      with:
+        path: |
+          ${{ github.workspace }}/./target/site/kover/report.xml
+        title: Code Coverage
+        token: ${{ env.GITHUB_TOKEN }}
+        update-comment: true
+        min-coverage-overall: 80
+        min-coverage-changed-files: 80
+        coverage-counter-type: LINE
