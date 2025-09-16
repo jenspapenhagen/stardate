@@ -159,7 +159,7 @@
                 <configuration>
                     <filters>
                         <excludes>
-                            <classes>de.papenhagen.stardate.config.*,de.papenhagen.stardate.StardateApplication</classes>
+                            <classes>de.papenhagen.stardate.StardateApplicationKt,de.papenhagen.stardate.config.*</classes>
                         </excludes>
                     </filters>
                     <rules>
@@ -180,7 +180,7 @@
                                 <bound>
                                     <aggregationForGroup>COVERED_PERCENTAGE</aggregationForGroup>
                                     <coverageUnits>BRANCH</coverageUnits>
-                                    <minValue>20</minValue>
+                                    <minValue>50</minValue>
                                 </bound>
                             </bounds>
                         </rule>
