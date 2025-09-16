@@ -54,10 +54,6 @@
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-starter-mcp-server-webmvc</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -122,6 +118,74 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jetbrains.kotlinx</groupId>
+                <artifactId>kover-maven-plugin</artifactId>
+                <version>0.9.1</version>
+                <executions>
+                    <!-- instrument test tasks -->
+                    <execution>
+                        <id>instr</id>
+                        <goals>
+                            <goal>instrumentation</goal>
+                        </goals>
+                    </execution>
+
+                    <!-- generate XML report in verify phase -->
+                    <execution>
+                        <id>kover-xml</id>
+                        <goals>
+                            <goal>report-xml</goal>
+                        </goals>
+                    </execution>
+
+                    <!-- generate HTML report in verify phase -->
+                    <execution>
+                        <id>kover-html</id>
+                        <goals>
+                            <goal>report-html</goal>
+                        </goals>
+                    </execution>
+
+                    <!-- check coverage rules in verify phase -->
+                    <execution>
+                        <id>kover-verify</id>
+                        <goals>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <filters>
+                        <excludes>
+                            <classes>de.papenhagen.stardate.config.*,de.papenhagen.stardate.StardateApplication</classes>
+                        </excludes>
+                    </filters>
+                    <rules>
+                        <rule>
+                            <name>Basic Line Coverage</name>
+                            <bounds>
+                                <bound>
+                                    <aggregationForGroup>COVERED_PERCENTAGE</aggregationForGroup>
+                                    <coverageUnits>LINE</coverageUnits>
+                                    <maxValue>100</maxValue>
+                                    <minValue>80</minValue>
+                                </bound>
+                            </bounds>
+                        </rule>
+                        <rule>
+                            <name>Branch Coverage</name>
+                            <bounds>
+                                <bound>
+                                    <aggregationForGroup>COVERED_PERCENTAGE</aggregationForGroup>
+                                    <coverageUnits>BRANCH</coverageUnits>
+                                    <minValue>20</minValue>
+                                </bound>
+                            </bounds>
+                        </rule>
+                    </rules>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>com.github.gantsign.maven</groupId>
