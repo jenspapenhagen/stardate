@@ -182,7 +182,7 @@
                     <filters>
                         <excludes>
                             <classes>de.papenhagen.stardate.StardateApplicationKt,de.papenhagen.stardate.config.*</classes>
-                            <annotatedBy>org.mapstruct.Mapper</annotatedBy>
+                            <annotatedBy>org.mapstruct.Mapper,org.springframework.boot.autoconfigure.SpringBootApplication</annotatedBy>
                         </excludes>
                     </filters>
                     <rules>
@@ -198,12 +198,12 @@
                             </bounds>
                         </rule>
                         <rule>
-                            <name>Branch Coverage</name>
+                            <name>Lines Coverage</name>
                             <bounds>
                                 <bound>
                                     <aggregationForGroup>COVERED_PERCENTAGE</aggregationForGroup>
-                                    <coverageUnits>BRANCH</coverageUnits>
-                                    <minValue>50</minValue>
+                                    <coverageUnits>LINE</coverageUnits>
+                                    <minValue>75</minValue>
                                 </bound>
                             </bounds>
                         </rule>
