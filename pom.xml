@@ -182,6 +182,7 @@
                     <filters>
                         <excludes>
                             <classes>de.papenhagen.stardate.StardateApplicationKt,de.papenhagen.stardate.config.*</classes>
+                            <annotatedBy>org.mapstruct.Mapper</annotatedBy>
                         </excludes>
                     </filters>
                     <rules>
