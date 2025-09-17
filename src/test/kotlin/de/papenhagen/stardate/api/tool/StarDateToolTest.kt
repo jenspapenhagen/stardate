@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test
 import java.time.LocalDateTime
 
 class StarDateToolTest {
-
     private val starDateService: StarDateService = mockk<StarDateService>()
     private lateinit var starDateTool: StarDateTool
 
@@ -34,7 +33,7 @@ class StarDateToolTest {
         assertThat(result).isEqualTo("StarDate(localDateTime=2025-09-14T10:17:25, starDate=2265.5)")
     }
 
-      @Test
+    @Test
     fun getStarDate() {
         // given
         val localDateTime = LocalDateTime.of(2025, 9, 14, 10, 17, 25)
