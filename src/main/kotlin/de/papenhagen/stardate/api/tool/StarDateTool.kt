@@ -15,13 +15,8 @@ class StarDateTool(
         name = "get-stardate",
         description = "Get the Star Trek (R) Stardate from the TOS era",
     )
-    fun getStarDate(): kotlin.String {
-        try {
-            val calcStarDate = starDateService.calcStarDate() ?: return "No star date calucation possible."
-
-            return calcStarDate.toString()
-        } catch (e: Exception) {
-            return "Error fetching latest videos: " + e.message
-        }
+    fun getStarDate(): String {
+        val calcStarDate = starDateService.calcStarDate()
+        return calcStarDate.toString()
     }
 }
