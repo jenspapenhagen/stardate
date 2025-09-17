@@ -53,4 +53,18 @@ class StarDateUtilTest {
         assertThat(calcStarDate).isNotBlank
         assertThat(calcStarDate).isEqualTo("2000,0")
     }
+
+    @Test
+    fun testForCoveringTheConstructor() {
+        // given
+        val tosDate = LocalDateTime.of(2266, 1, 1, 0, 0)
+
+        // when
+        val starDateUtil: StarDateUtil = StarDateUtil()
+        val toString = starDateUtil.toString()
+
+        // then
+        assertThat(toString).isNotBlank
+        assertThat(toString).contains("service.util.StarDateUtil")
+    }
 }
