@@ -34,5 +34,6 @@ mcp run get-stardate
 - [MapStruct](https://mapstruct.org/)
 - [Kover (test coverage)](https://github.com/Kotlin/kotlinx-kover)
 - [Ktlint](https://github.com/pinterest/ktlint)
-- [GitHub Action Workflow](https://docs.github.com/de/actions/how-tos/write-workflows)
+- [GitHub Action Workflow](https://docs.github.com/de/actions/how-tos/write-workflows) or use
+- [Jenkins File](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/)
 - [flatten maven plugin](https://www.mojohaus.org/flatten-maven-plugin/)
