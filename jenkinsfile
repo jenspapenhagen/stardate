@@ -1,0 +1,86 @@
+pipeline {
+    agent any
+
+    environment {
+        GITHUB_TOKEN = credentials('github-token') // Define this in Jenkins credentials
+    }
+
+    options {
+        skipDefaultCheckout()
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Cache Maven packages') {
+            steps {
+                // Jenkins doesn't have built-in cache like GitHub Actions.
+                // You'd need to use a plugin (like `Pipeline Caching`) or manage caching manually.
+                echo 'Maven cache assumed handled via local ~/.m2/repository or external caching plugin.'
+            }
+        }
+
+        stage('Setup Java 21') {
+            tools {
+                jdk 'jdk-21'
+            }
+        }
+
+        stage('Build with Maven') {
+            steps {
+                sh 'mvn package --file pom.xml -DskipTests'
+            }
+        }
+
+        stage('Lint Kotlin Code') {
+            steps {
+                sh 'mvn ktlint:check'
+            }
+        }
+
+        stage('Run Unit Tests') {
+            steps {
+                sh 'mvn test -Dtest=*Test'
+            }
+        }
+
+        stage('Run Kover Report') {
+            steps {
+                sh 'mvn kover-report:report'
+            }
+        }
+
+        stage('Verify Coverage') {
+            steps {
+                sh 'mvn kover:verify'
+            }
+        }
+
+        stage('Publish Kover Report') {
+            steps {
+                publishHTML(target: [
+                    reportDir: 'target/site/kover-html',
+                    reportFiles: 'index.html',
+                    reportName: 'Kover Coverage Report',
+                    keepAll: true,
+                    alwaysLinkToLastBuild: true,
+                    allowMissing: true
+                ])
+            }
+        }
+
+    }
+
+    post {
+        always {
+            junit '**/target/site/kover/report.xml'
+        }
+        failure {
+            echo 'Build failed!'
+        }
+    }
+}
