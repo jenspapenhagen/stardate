@@ -51,7 +51,7 @@ jobs:
 
       - name: get-pom-version
         id: pom-version
-        uses: jenspapenhagen/maven-get-version-action@v1.0.4
+        uses: jenspapenhagen/maven-get-version-action@v1.0.5
 
       - name: Print Maven POM project version
         run: echo "version = ${{ steps.pom-version.outputs.version }}"
