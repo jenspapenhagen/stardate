@@ -49,6 +49,13 @@ jobs:
       - name: run Unit Test
         run: mvn test -Dtest=*Test
 
+      - name: get-pom-version
+        id: pom-version
+        uses: jenspapenhagen/maven-get-version-action@v1.0.4
+
+      - name: Print Maven POM project version
+        run: echo "version = ${{ steps.pom-version.outputs.version }}"
+
       - name: run Kover Report
         run: mvn kover:report-xml
         working-directory: ${{ inputs.working-directory }}
