@@ -41,13 +41,20 @@ jobs:
           cache: 'maven'
 
       - name: build with Maven
-        run: mvn package --file pom.xml
+        run: mvn package -DskipTests=true --file pom.xml
 
       - name: Lint Kotlin Code
         run: mvn ktlint:check
 
       - name: run Unit Test
         run: mvn test -Dtest=*Test
+
+      - name: get-pom-version
+        id: pom-version
+        uses: jenspapenhagen/maven-get-version-action@v1.0.12
+
+      - name: Print Maven POM project version
+        run: echo "version = ${{ steps.pom-version.outputs.version }}"
 
       - name: run Kover Report
         run: mvn kover:report-xml
