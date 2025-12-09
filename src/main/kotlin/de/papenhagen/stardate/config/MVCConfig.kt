@@ -11,16 +11,16 @@ import java.util.function.UnaryOperator
 
 @Configuration
 class MVCConfig : WebMvcConfigurer {
-
     @Bean
-    fun objectMapper(): ObjectMapper {
-        return JsonMapper.builder()
-            .changeDefaultPropertyInclusion(UnaryOperator { incl: JsonInclude.Value? ->
-                incl!!.withValueInclusion(
-                    JsonInclude.Include.ALWAYS
-                )
-            })
-            .defaultTimeZone(TimeZone.getTimeZone("UTC")) // set a default timezone for dates
-            .build();
-    }
+    fun objectMapper(): ObjectMapper =
+        JsonMapper
+            .builder()
+            .changeDefaultPropertyInclusion(
+                UnaryOperator { incl: JsonInclude.Value? ->
+                    incl!!.withValueInclusion(
+                        JsonInclude.Include.ALWAYS,
+                    )
+                },
+            ).defaultTimeZone(TimeZone.getTimeZone("UTC")) // set a default timezone for dates
+            .build()
 }
