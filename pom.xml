@@ -144,7 +144,7 @@
             <plugin>
                 <groupId>org.jetbrains.kotlinx</groupId>
                 <artifactId>kover-maven-plugin</artifactId>
-                <version>0.9.6</version>
+                <version>0.9.7</version>
                 <executions>
                     <!-- instrument test tasks -->
                     <execution>
