@@ -18,10 +18,19 @@ return a JSON like that:
 ```
 
 ## MCP Tool
-This MCP tool exposes an endpoint named "get-stardate" that, when called, returns the current Star Trek (TOS) style stardate as a string. It does this by delegating the calculation to a service called StarDateService
+
+This MCP tool exposes an endpoint named "get-stardate" that, 
+when called, returns the current Star Trek (TOS) style stardate as a string. 
+It does this by delegating the calculation to a service called StarDateService
+
+
 ```bash
 mcp run get-stardate
 ```
+
+## Claude Plugin
+
+Build a Claude Plugin For more details, see the [Claude Plugin README](stardate-plugin/README.md).
 
 ## Technologies in use
 
@@ -35,6 +44,7 @@ mcp run get-stardate
 - [Kover (test coverage)](https://github.com/Kotlin/kotlinx-kover)
 - [Ktlint](https://github.com/pinterest/ktlint)
 - [Mockk](https://mockk.io/)
+- [Jackson](https://github.com/FasterXML/jackson)
 - [GitHub Action Workflow](https://docs.github.com/de/actions/how-tos/write-workflows) or use
 - [Jenkins File](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/)
 - [flatten maven plugin](https://www.mojohaus.org/flatten-maven-plugin/)
