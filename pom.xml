@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.0</version>
+        <version>4.0.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>de.papenhagen</groupId>
@@ -29,9 +29,9 @@
     <properties>
         <!--        we have to use 21 because the "update-cycle" fo kotlin is slow aka stuck behind -->
         <java.version>21</java.version>
-        <kotlin.version>2.2.21</kotlin.version>
+        <kotlin.version>2.3.10</kotlin.version>
         <spring-ai.version>1.1.2</spring-ai.version>
-        <mockk.version>1.14.7</mockk.version>
+        <mockk.version>1.14.9</mockk.version>
         <mapstruct.version>1.6.3</mapstruct.version>
     </properties>
     <dependencies>
@@ -69,7 +69,7 @@
         <dependency>
             <groupId>io.github.oshai</groupId>
             <artifactId>kotlin-logging-jvm</artifactId>
-            <version>7.0.13</version>
+            <version>7.0.14</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -107,6 +107,15 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>de.papenhagen.stardate.StardateApplicationKt</mainClass>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-devtools</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -127,7 +136,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.14.1</version>
+                <version>3.15.0</version>
                 <configuration>
                     <source>21</source> <!-- depending on your project -->
                     <target>21</target> <!-- depending on your project -->
@@ -144,7 +153,7 @@
             <plugin>
                 <groupId>org.jetbrains.kotlinx</groupId>
                 <artifactId>kover-maven-plugin</artifactId>
-                <version>0.9.3</version>
+                <version>0.9.7</version>
                 <executions>
                     <!-- instrument test tasks -->
                     <execution>

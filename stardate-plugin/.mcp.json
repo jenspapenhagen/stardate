@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "stardate": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "${CLAUDE_PLUGIN_ROOT}/stardate-plugin/stardate.jar"
+      ],
+      "env": {
+        "SERVER_PORT": "8080"
+      }
+    }
+  }
+}

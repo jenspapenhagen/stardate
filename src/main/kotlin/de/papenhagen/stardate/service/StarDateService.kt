@@ -19,4 +19,11 @@ class StarDateService(
 
         return StarDate(now, starDate)
     }
+
+    open fun calcStarDateForDate(dateTime: LocalDateTime): StarDate {
+        val starDate = StarDateUtil.calc(dateTime)
+        logger.debug { "Stardate $starDate for LocalDate: $dateTime" }
+
+        return StarDate(dateTime, starDate)
+    }
 }

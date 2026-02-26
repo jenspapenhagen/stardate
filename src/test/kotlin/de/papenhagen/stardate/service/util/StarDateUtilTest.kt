@@ -16,7 +16,6 @@ class StarDateUtilTest {
 
     @BeforeEach
     fun setUp() {
-        // set local for period/comma rules
         storedLocale = Locale.GERMAN
 
         val instantExpected = "2025-09-14T10:17:25Z"
@@ -30,40 +29,31 @@ class StarDateUtilTest {
 
     @Test
     fun testingStarDateGeneration() {
-        // given
         val now = LocalDateTime.now(clock)
 
-        // when
         val calcStarDate = StarDateUtil.calc(now)
 
-        // then
         assertThat(calcStarDate).isNotBlank
-        assertThat(calcStarDate).isEqualTo("-238297,9")
+        assertThat(calcStarDate).isEqualTo("-297297,9")
     }
 
     @Test
     fun originalSeriesStart() {
-        // given
-        val tosDate = LocalDateTime.of(2266, 1, 1, 0, 0)
+        val baseDate = LocalDateTime.of(2323, 1, 1, 0, 0)
 
-        // when
-        val calcStarDate = StarDateUtil.calc(tosDate)
+        val calcStarDate = StarDateUtil.calc(baseDate)
 
-        // then
         assertThat(calcStarDate).isNotBlank
-        assertThat(calcStarDate).isEqualTo("2000,0")
+        assertThat(calcStarDate).isEqualTo("0,0")
     }
 
     @Test
     fun testForCoveringTheConstructor() {
-        // given
-        val tosDate = LocalDateTime.of(2266, 1, 1, 0, 0)
+        val tosDate = LocalDateTime.of(2323, 1, 1, 0, 0)
 
-        // when
         val starDateUtil: StarDateUtil = StarDateUtil()
         val toString = starDateUtil.toString()
 
-        // then
         assertThat(toString).isNotBlank
         assertThat(toString).contains("service.util.StarDateUtil")
     }

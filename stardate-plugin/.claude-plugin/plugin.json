@@ -1,0 +1,35 @@
+{
+  "name": "stardate",
+  "description": "Star Trek Future Stardate Calculator - Get current stardate and convert dates to Star Trek Future Stardate format (Base: January 1, 2323 = Stardate 0)",
+  "version": "1.0.0",
+  "author": {
+    "name": "de.papenhagen",
+    "url": "https://github.com/papenhagen/stardate"
+  },
+  "homepage": "https://github.com/papenhagen/stardate",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/papenhagen/stardate"
+  },
+  "license": "MIT",
+  "mcpServers": {
+    "stardate": {
+      "command": "java",
+      "args": [
+        "-jar",
+        "${CLAUDE_PLUGIN_ROOT}/stardate-plugin/stardate.jar"
+      ],
+      "env": {
+        "SERVER_PORT": "8080"
+      }
+    }
+  },
+  "keywords": [
+    "stardate",
+    "star trek",
+    "future stardate",
+    "calculator",
+    "mcp",
+    "tool"
+  ]
+}
