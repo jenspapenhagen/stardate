@@ -62,7 +62,7 @@ jobs:
 
       - name: Add coverage report to PR
         id: kover
-        uses: mi-kas/kover-report@v2.4
+        uses: mi-kas/kover-report@v2.5
         with:
           path: |
             ${{ github.workspace }}/./target/site/kover/report.xml
